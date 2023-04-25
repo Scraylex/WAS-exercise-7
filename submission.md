@@ -3,19 +3,50 @@ Github Fork: https://github.com/Scraylex/WAS-exercise-7
 
 ## Task 3
 
+Total tour distance greedy: 40551.0
+
 ### 1)
 
-How do the parameters α and β impact the performance of your algorithm (comparing the
-produced solution to the optimal solution)? Describe and interpret the behavior of your ant
-colony for different parameter values, while considering that the ant population, the number
-of iterations, and the evaporation rate remain fixed.
+α generally manipulates the weight that the pheromone has in the probability calculation
+β gives more weight to the distance heuristic
+
+In my solution probably due to problems in the implementation it fluctuates weirdly and usually performs best when either alpha or beta are set to 0 or disproportionally strong.
+
+
+Example (always 10 iterations):
+
+| alpha | beta | distance |
+| ----- | ---- | -------- |
+| 1     | 2    | 53470    |
+| 0     | 3    | 38805    |
+| 0     | 1    | 46897    |
+| 2     | 0    | 49736    |
+| 1     | 1.5  | 57694    |
+| 0.4   | 4    | 59251    |
+
+as we can see from the data beta is a better in this example
 
 ### 2)
 
-How does the evaporation rate ρ affect the performance of your algorithm (comparing the
-produced solution to the optimal solution)? Describe and interpret the behavior of your ant
-colony for different evaporation rates, while considering that the ant population, the number
-of iterations, and the parameters α and β remain fixed.
+rho generally manipulates the weight of the pheromone evaporation indirectly influencing the probabilities picked
+
+Experiment design:
+
+- alpha = 1
+- beta = 3
+- iteration = 10
+
+| rho | distance |
+| --- | -------- |
+| 0.1 | 62028    |
+| 0.2 | 58212    |
+| 0.3 | 57211    |
+| 0.4 | 58656    |
+| 0.5 | 58699    |
+| 0.7 | 57166    |
+| 0.9 | 58975    |
+
+As can be seen the evaporation rate seems to be rather arbitrary for my implementation. =(
 
 ### 3)
 

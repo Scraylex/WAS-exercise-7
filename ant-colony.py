@@ -63,11 +63,11 @@ class AntColony:
                     self.environment.update_pheromones(ant.visited_locations[i], ant.visited_locations[j],
                                                        1 / ant.travelled_distance)
 
-            # Find the ant that found the shortest path
-            for ant in self.ants:
-                if ant.travelled_distance < shortest_distance:
-                    shortest_distance = ant.travelled_distance
-                    solution = ant.visited_locations
+        # Find the ant that found the shortest path
+        for ant in self.ants:
+            if ant.travelled_distance < shortest_distance:
+                shortest_distance = ant.travelled_distance / self.iterations
+                solution = ant.visited_locations
 
         return solution, shortest_distance
 
@@ -75,9 +75,9 @@ class AntColony:
 def main():
     # Intialize the ant colony
     ant_population = 48
-    iterations = 5
+    iterations = 10
     alpha = 1
-    beta = 2
+    beta = 3
     rho = 0.5
     ant_colony = AntColony(ant_population, iterations, alpha, beta, rho)
 
